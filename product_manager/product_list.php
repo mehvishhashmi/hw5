@@ -19,7 +19,15 @@
     </aside>
 
     <section>
-        <!-- display a table of products -->
+ <?php
+ $queryProducts = 'SELECT * FROM products_guitar1 WHERE categoryID = :category_id ORDER BY productID';
+     $statement3 =$db->prepare($queryProducts);
+     $statement3->bindValue(':category_id',$category_id);
+     $statement3->execute();
+     $products = $statement3->fetchAll();
+     $statement3->closeCursor();
+ ?>
+	<!-- display a table of products -->
         <h2><?php echo $category_name; ?></h2>
         <table>
             <tr>
